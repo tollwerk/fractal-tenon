@@ -1,0 +1,9 @@
+<div class="Browser-panel Browser-tenon" data-role="tab-panel" id="browser-{{ entity.id }}-panel-tenon">
+    <div class="tenon">
+        <div class="tenon-controls">
+            <button onclick="Tenon.test('{{ path(frctl.theme.urlFromRoute('preview', { handle: entity.handle })) }}')">Test with Tenon</button>
+            <span class="tenon-history"></span>
+        </div>
+        <div class="tenon-results"></div>
+    </div>
+</div>

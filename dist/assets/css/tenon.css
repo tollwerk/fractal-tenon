@@ -1,0 +1,64 @@
+.tenon {
+    width: 100%;
+}
+
+.tenon-controls button {
+    color: #535363;
+    background: #fff url(../img/tenon.png) .5rem center no-repeat;
+    background-size: 1.5rem;
+    border: 1px solid rgba(83, 83, 99, 0.25);
+    padding: .5rem .75rem .5rem 2.75rem;
+}
+
+.tenon-controls button:hover {
+    border-color: rgba(83, 83, 99, .5);
+}
+
+.tenon-controls button[disabled] {
+    background-image: url(../img/gears.svg);
+    color: rgba(83, 83, 99, .5);
+}
+
+.tenon-history {
+    padding: 0 .5rem;
+}
+
+.tenon-results {
+    width: 100%;
+}
+
+.tenon-results:empty {
+    display: none;
+}
+
+.tenon-results ol {
+    list-style-type: decimal;
+    list-style-position: inside;
+}
+
+.tenon-results .tenon-success,
+.tenon-results li {
+    border-top: 1px solid rgba(83, 83, 99, 0.25);
+    margin-top: .75rem;
+    padding: 1rem 0 .25rem;
+}
+
+.tenon-results h3 {
+    display: inline-block;
+}
+
+.tenon-results code {
+    display: block;
+    margin: .5rem 0;
+}
+
+.tenon-results pre {
+    background-color: #fff;
+    border: 1px solid rgba(83, 83, 99, 0.25);
+    padding: .5rem;
+}
+
+.tenon-priority {
+    display: inline-block;
+}
+
