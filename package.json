@@ -1,7 +1,7 @@
 {
     "name": "fractal-tenon",
     "version": "0.1.0",
-    "description": "Fractal component library plugin for accessibility testing with Tenon (http://tenon.io)",
+    "description": "Fractal component library tool plugin for accessibility testing against Tenon (http://tenon.io)",
     "homepage": "https://github.com/tollwerk/fractal-tenon#readme",
     "main": "index.js",
     "scripts": {
@@ -34,6 +34,7 @@
         "btoa": "^1.1.2"
     },
     "files": [
-        "dist"
+        "dist",
+        "docs"
     ]
 }
