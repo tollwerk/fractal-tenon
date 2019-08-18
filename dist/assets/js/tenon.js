@@ -1,20 +1,20 @@
 /* global hljs */
+/* eslint-disable no-useless-escape */
 
-(function (document) {
+(function (d) {
     var currentScript = "currentScript",
-        scripts = document.getElementsByTagName('script'); // Live NodeList collection
+        scripts = d.getElementsByTagName('script'); // Live NodeList collection
 
     // If browser needs currentScript polyfill, add get currentScript() to the document object
-    if (!(currentScript in document)) {
-        Object.defineProperty(document, currentScript, {
+    if (!(currentScript in d)) {
+        Object.defineProperty(d, currentScript, {
             get: function () {
 
                 // IE 6-10 supports script readyState
                 // IE 10+ support stack trace
                 try {
                     throw new Error();
-                }
-                catch (err) {
+                } catch (err) {
 
                     // Find the second match for the "at" string to get file src url from stack.
                     // Specifically works with the format of stack traces in IE.
@@ -53,9 +53,9 @@
      * @param {String} relUrl Relative component URL
      */
     TenonAPIClient.prototype.test = function (relUrl) {
-        this.button = document.querySelector('.tenon-controls button');
-        this.history = document.querySelector('.tenon-history');
-        this.results = document.querySelector('.tenon-results');
+        this.button = d.querySelector('.tenon-controls button');
+        this.history = d.querySelector('.tenon-history');
+        this.results = d.querySelector('.tenon-results');
 
         this.button.disabled = true;
         this.clearElement(this.results);
@@ -63,19 +63,22 @@
         var data = new FormData();
         data.append('key', this.apiKey);
         data.append('url', this.publicUrl + relUrl);
-        data.append('viewPortWidth', document.querySelector('.Preview-iframe').clientWidth);
+        data.append('viewPortWidth', d.querySelector('.Preview-iframe').clientWidth);
+        data.append('fragment', '1');
+        data.append('store', '1');
 
         // API call
+        var that = this;
         fetch(this.apiUrl, { method: 'post', body: data })
             .then(function (response) {
                 return response.json();
             })
             .then(this.showResult.bind(this))
             .catch(function () {
-                this.button.disabled = false;
-                this.results.appendChild(this.createElement('p', { 'class': 'tenon-error' }, 'An error occurred. Please view the results on tenon.io'));
-            }.bind(this));
-    }
+                that.button.disabled = false;
+                that.results.appendChild(that.createElement('p', { 'class': 'tenon-error' }, 'An error occurred. Please view the results on tenon.io'));
+            });
+    };
 
     /**
      * Show the tenon test results
@@ -86,25 +89,26 @@
         this.button.disabled = false;
 
         // Create the history link
-        this.clearElement(this.history).appendChild(this.createElement('a', {
-            href: data.resultUrl,
-            target: '_blank'
-        }, 'View results on tenon.io'));
+        if (data.resultUrl) {
+            this.clearElement(this.history).appendChild(this.createElement('a', {
+                href: data.resultUrl,
+                target: '_blank',
+            }, 'View results on tenon.io'));
+        }
 
         // Create the result list
         var results;
         var issues = this.filterIssues(data.resultSet);
         if (issues.length) {
-            results = this.createElement('ol', { 'class': 'tenon-issues' });
+            results = this.createElement('ol', { class: 'tenon-issues' });
             for (var i = 0; i < issues.length; ++i) {
                 this.addIssue(results, issues[i]);
             }
-
         } else {
-            results = this.createElement('p', { 'class': 'tenon-success' }, 'Congratulations! There were no issues found with this component.');
+            results = this.createElement('p', { class: 'tenon-success' }, 'Congratulations! There were no issues found with this component.');
         }
         this.results.appendChild(results);
-    }
+    };
 
     /**
      * Filter issues
@@ -118,7 +122,7 @@
                 28 // Page level heading
             ].indexOf(issue.bpID) < 0) : true;
         });
-    }
+    };
 
     /**
      * Add an issue to the result list
@@ -131,7 +135,7 @@
 
         // Add title
         issue.appendChild(this.createElement('h3', null, data.errorTitle));
-        issue.appendChild(this.createElement('div', { 'class': 'tenon-priority Tree-title' }, 'Priority ' + data.priority + '%'));
+        issue.appendChild(this.createElement('div', { class: 'tenon-priority Tree-title' }, 'Priority ' + data.priority + '%'));
 
         // Add code snippet
         var code = this.createElement('code');
@@ -146,7 +150,7 @@
         issue.appendChild(descr);
 
         results.appendChild(issue);
-    }
+    };
 
     /**
      * Create and return an HTML element
@@ -157,14 +161,14 @@
      * @return {Element} Element
      */
     TenonAPIClient.prototype.createElement = function (element, attributes, content) {
-        var el = document.createElement(element);
+        var el = d.createElement(element);
         var attrs = attributes || {};
         for (var a in attrs) {
             el.setAttribute(a, attrs[a]);
         }
         el.textContent = content || '';
         return el;
-    }
+    };
 
     /**
      * Clear an element
@@ -177,7 +181,7 @@
             element.removeChild(element.firstChild);
         }
         return element;
-    }
+    };
 
-    window.Tenon = new TenonAPIClient(document.currentScript);
-})(document);
+    window.Tenon = new TenonAPIClient(d.currentScript);
+}(document));

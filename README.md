@@ -33,7 +33,7 @@ const theme = mandelbrot(/* {...} */);
 
 // Configure Tenon support
 tenon(theme, {
-    apiKey: 'TENON_API_KEY',
+    apiKey: '<TENON_API_KEY>',
     publicUrl: 'http://fractal.example.com'
 });
 
@@ -60,6 +60,11 @@ const theme = mandelbrot({
 
 Hitting the "Test with Tenon" button will call Tenon and display a short version the issues found for your component. You may view the full test results on [tenon.io](https://tenon.io);
 
+Docker image
+------------
+
+We provide an [experimental Dockerfile](https://github.com/tollwerk/docker-fractal) for build a **Docker image** running a Fractal instance with Tenon support.
+
 Known problems
 --------------
 
@@ -80,20 +85,13 @@ Please refer to the [changelog](CHANGELOG.md) for a complete release history.
 
 Legal
 -----
-Copyright © 2017 Joschi Kuphal <joschi@kuphal.net> / [@jkphl](https://twitter.com/jkphl). *fractal-tenon* is licensed under the terms of the [MIT license](N:/sevensix/data/fractalTYPO3/LICENSE.txt).
-
+Copyright © 2019 Joschi Kuphal <joschi@kuphal.net> / [@jkphl](https://twitter.com/jkphl). *fractal-tenon* is licensed under the terms of the [MIT license](N:/sevensix/data/fractalTYPO3/LICENSE.txt).
 
 [npm-url]: https://npmjs.org/package/fractal-tenon
 [npm-image]: https://badge.fury.io/js/fractal-tenon.svg
 [npm-downloads]: https://img.shields.io/npm/dm/fractal-tenon.svg
 
-[travis-url]: http://travis-ci.org/jkphl/fractal-tenon
-[travis-image]: https://secure.travis-ci.org/jkphl/fractal-tenon.svg
-
-[coveralls-url]: https://coveralls.io/r/jkphl/fractal-tenon
-[coveralls-image]: https://img.shields.io/coveralls/jkphl/fractal-tenon.svg
-
-[depstat-url]: https://david-dm.org/jkphl/fractal-tenon#info=dependencies
-[depstat-image]: https://david-dm.org/jkphl/fractal-tenon.svg
-[devdepstat-url]: https://david-dm.org/jkphl/fractal-tenon#info=devDependencies
-[devdepstat-image]: https://david-dm.org/jkphl/fractal-tenon/dev-status.svg
+[depstat-url]: https://david-dm.org/tollwerk/fractal-tenon#info=dependencies
+[depstat-image]: https://david-dm.org/tollwerk/fractal-tenon.svg
+[devdepstat-url]: https://david-dm.org/tollwerk/fractal-tenon#info=devDependencies
+[devdepstat-image]: https://david-dm.org/tollwerk/fractal-tenon/dev-status.svg

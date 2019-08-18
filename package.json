@@ -1,6 +1,6 @@
 {
     "name": "fractal-tenon",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "description": "Fractal component library tool (http://fractal.build) plugin for accessibility testing against Tenon (http://tenon.io)",
     "homepage": "https://github.com/tollwerk/fractal-tenon#readme",
     "main": "index.js",
@@ -16,7 +16,9 @@
         "tenon",
         "a11y",
         "accessibility",
-        "component"
+        "component",
+        "test",
+        "testing"
     ],
     "author": "Joschi Kuphal <joschi@kuphal.net> (https://jkphl.is)",
     "license": "MIT",
@@ -24,14 +26,14 @@
         "url": "https://github.com/tollwerk/fractal-tenon/issues"
     },
     "devDependencies": {
-        "eslint": "^3.15.0",
-        "eslint-config-airbnb": "^14.1.0",
-        "eslint-plugin-import": "^2.2.0",
-        "eslint-plugin-jsx-a11y": "4.0.0",
-        "eslint-plugin-react": "^6.10.0"
+        "eslint": "^6.1.0",
+        "eslint-config-airbnb": "^18.0.1",
+        "eslint-plugin-import": "^2.18.2",
+        "eslint-plugin-jsx-a11y": "6.2.3",
+        "eslint-plugin-react": "^7.14.3"
     },
     "dependencies": {
-        "btoa": "^1.1.2"
+        "btoa": "^1.2.1"
     },
     "files": [
         "dist",
