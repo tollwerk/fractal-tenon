@@ -60,18 +60,23 @@ const theme = mandelbrot({
 
 Hitting the "Test with Tenon" button will call Tenon and display a short version the issues found for your component. You may view the full test results on [tenon.io](https://tenon.io);
 
-Docker image
+Important Note
+--------------
+
+Please be aware that, due to the nature of the Tenon API, you should **never make your Tenon connected Fractal instance publicly accessible**. The API requires your private Tenon API key to be sent with every request, so you'd basically expose your API key to anyone having access to your Fractal instance. You have been warned!
+
+Docker Image
 ------------
 
 We provide an [experimental Dockerfile](https://github.com/tollwerk/docker-fractal) for build a **Docker image** running a Fractal instance with Tenon support.
 
-Known problems
+Known Problems
 --------------
 
 * The client JavaScript involved requires you to use a fairly recent browser version
 * The module is in a very early stage and might have bugs. Please let me know if you spot one!
 
-To-do
+To-Do
 -----
 
 * Add tests
