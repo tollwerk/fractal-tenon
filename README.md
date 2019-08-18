@@ -63,7 +63,7 @@ Hitting the "Test with Tenon" button will call Tenon and display a short version
 Important Note
 --------------
 
-Please be aware that, due to the nature of the Tenon API, you should **never make your Tenon connected Fractal instance publicly accessible**. The API requires your private Tenon API key to be sent with every request, so you'd basically expose your API key to anyone having access to your Fractal instance. You have been warned!
+Please be aware that, due to the nature of the Tenon API, you should **never make your Tenon connected Fractal instance available to the public**. Tenon requires your private API key to be sent with every request, so you basically expose your secret key to anyone having access to your Fractal instance. You have been warned!
 
 Docker Image
 ------------
